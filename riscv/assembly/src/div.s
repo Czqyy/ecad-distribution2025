@@ -35,8 +35,11 @@ loop:
     or   t1, t1, t4
 
     # Check if R >= D
-    blt  t1, a1, else
-    
+    bge  t1, a1, else
+    addi t2, t2, -1    
+    j    loop
+
+else:
     # R := R - D
     sub  t1, t1, a1
     
@@ -44,9 +47,6 @@ loop:
     li   t5, 1
     sll  t5, t5, t2
     or   t0, t0, t5
-
-else:
-    nop    
 
     addi t2, t2, -1
     j    loop
